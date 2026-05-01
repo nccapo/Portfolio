@@ -1,16 +1,51 @@
+import { useLocation } from "react-router-dom";
+
 export const Page404 = () => {
+  const location = useLocation();
+
   return (
-    <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-800 sm:items-center sm:pt-0">
-      <div className="max-w-xl mx-auto sm:px-6 lg:px-8">
-        <div className="flex items-center pt-8 sm:justify-start sm:pt-0">
-          <div className="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider">
-            404
-          </div>
-          <div className="ml-4 text-lg text-gray-500 uppercase tracking-wider">
-            Not Found
-          </div>
-        </div>
+    <div>
+      <div className="line">
+        <span className="green">$</span> stat {location.pathname}
       </div>
+      <div className="line red">
+        {`stat: cannot stat '${location.pathname}': No such file or directory`}
+      </div>
+      <div className="line">&nbsp;</div>
+
+      <pre className="ascii-art amber">{String.raw`
+  _  _    ___  _  _
+ | || |  / _ \| || |
+ | || |_| | | | || |_
+ |__   _| |_| |__   _|
+    |_|  \___/   |_|
+`}</pre>
+
+      <div className="line">
+        {"the page you tried to reach isn't on this filesystem."}
+      </div>
+      <div className="line dim">&nbsp;</div>
+
+      <div className="line">try one of:</div>
+      <div className="help-grid">
+        <span className="k">[1]</span>
+        <span className="c">/</span>
+        <span className="d">return home</span>
+
+        <span className="k">[2]</span>
+        <span className="c">/about</span>
+        <span className="d">about me</span>
+
+        <span className="k">[3]</span>
+        <span className="c">/projects</span>
+        <span className="d">projects</span>
+
+        <span className="k">[4]</span>
+        <span className="c">/contact</span>
+        <span className="d">contact</span>
+      </div>
+
+      <div className="line dim">{"// or press ESC to go back to ~/"}</div>
     </div>
   );
 };
